@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
+import {  useNavigate } from 'react-router-dom';
 import Item from '../Item/Item';
 
 const Services = () => {
@@ -8,6 +10,10 @@ const Services = () => {
         .then(res => res.json())
         .then(data => setItems(data));
     }, [])
+    const navigate = useNavigate();
+    const navigateToItemDetail = id =>{
+        navigate(`/inventory`);
+    }
 
     return (
         <div className="">
@@ -18,6 +24,10 @@ const Services = () => {
                     key = {Items._id}
                     items = {Items}
                     ></Item>)}
+                
+                </div>
+                <div className="container text-center mb-3 ">
+                <Button onClick={() => navigateToItemDetail()} className='btn btn-success mt-5 w-25'>Manage Inventory</Button>
                 </div>
             </div>
         </div>
