@@ -23,11 +23,16 @@ const Header = () => {
                     <Navbar.Collapse id="responsive-navbar-nav"></Navbar.Collapse>
                     <Nav className="justify-content-end me-auto">
                         <Nav.Link as = {Link} to="home">Home</Nav.Link>
-                        <Nav.Link as = {Link} to="blogs">Inventory</Nav.Link>
+                        <Nav.Link as = {Link} to="Inventory">Inventory</Nav.Link>
                         <Nav.Link as = {Link} to="blogs">Blogs</Nav.Link>
                         
                     </Nav>
                     <Nav>
+                    {
+                                user && <>
+                                <Nav.Link as={Link} to="AddItem">Add Item</Nav.Link>
+                                </>
+                            }
                             
                             {
                                 user ?
