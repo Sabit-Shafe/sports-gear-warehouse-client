@@ -25,7 +25,7 @@ const Items = ({items}) => {
                     <h3>Price: {price}<span>$</span></h3>
                     <h3>quantity: {quantity}</h3>
                     <h5>supplierName: {supplierName}</h5>
-                    <Button onClick={() => navigateToItemDetail(_id)} className='btn btn-primary'>Book: {name}</Button>
+                    <Button onClick={() => navigateToItemDetail(_id)} className='btn btn-primary'>Stock Update</Button>
                 </Card.Body>
             </Card>
             
