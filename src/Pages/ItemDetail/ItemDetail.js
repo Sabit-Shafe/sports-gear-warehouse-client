@@ -1,27 +1,26 @@
-import React, { } from 'react';
+import React, { useState } from 'react';
 import {Button, Card } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import useItemDetails from '../../hooks/useItemDetails';
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
 
 
 
 const ItemDetail = () => {
     const { ItemId } = useParams();
-    const [Item] = useItemDetails(ItemId);
-    const { register} = useForm();
+    const [shouldRemount, setShouldRemount] = useState(false)
+    const [Item] = useItemDetails(ItemId, shouldRemount);
+    const [updatedQuantity, setUpdatedQuantity] = useState()
 
     const navigate = useNavigate();
-    const navigateToItemDetail = id =>{
+    const navigateToItemDetail = _id =>{
         navigate(`/inventory`);
     }
 
     const handleDelivered = (quantity) => {
         
-        const newQuantity =parseInt(quantity) -1;
-        console.log(newQuantity);
+        const updatedQuantity = (parseInt(quantity) -1).toString();
 
-        const updatedQuantity = {newQuantity}
         const url = `http://localhost:5000/items/${ItemId}`
         fetch(url, {
             method: "PUT",
@@ -29,22 +28,21 @@ const ItemDetail = () => {
                 'content-type': 'application/json'
             
             },
-            body: JSON.stringify(updatedQuantity)
+            body: JSON.stringify({updatedQuantity})
 
         })
         .then(res => res.json())
         .then(data =>{
             console.log('succsessful', data);
+            setShouldRemount(!shouldRemount)
             // Alert('quantity updated')
         })
 
     }
-    const HandleAddQuantity = (quantity) => {
-        
-        const newQuantity =parseInt(quantity) + 1;
-        console.log(newQuantity);
+    const HandleAddQuantity = (newQuantity, oldQuantity) => {
+        const updatedQuantity = (parseInt(newQuantity) + parseInt(oldQuantity)).toString();
 
-        const updatedQuantity = {newQuantity}
+        // const updatedQuantity = {finalQuantity}
         const url = `http://localhost:5000/items/${ItemId}`
         fetch(url, {
             method: "PUT",
@@ -52,16 +50,18 @@ const ItemDetail = () => {
                 'content-type': 'application/json'
             
             },
-            body: JSON.stringify(updatedQuantity)
+            body: JSON.stringify({updatedQuantity})
 
         })
         .then(res => res.json())
         .then(data =>{
             console.log('succsessful', data);
-            
+            setUpdatedQuantity("");
+            setShouldRemount(!shouldRemount)
         })
 
     }
+
 
 
     
@@ -77,17 +77,19 @@ const ItemDetail = () => {
                         {Item.description}
                     </Card.Text>
                     <h3>Price: {Item.price}<span>$</span></h3>
-                    <h3>quantity: {Item.quantity}</h3>
+                    <h3>quantity: {Item.quantity > 0 ? Item.quantity : "Stock out"}</h3>
                     <h5>supplierName: {Item.supplierName}</h5>
-                    <Button  onClick={()=> handleDelivered (Item.quantity)} className='btn btn-primary'>Delivered</Button>
+                    <Button   onClick={()=> handleDelivered (Item.quantity)} className='btn btn-primary'>Delivered</Button>
                 </Card.Body>
             </Card>
+            {/* disabled={Item.quantity === 0 ? false : true} */}
         </div>
         <div>
         <h2>Please add a quantity</h2>
                 <form className='d-flex flex-column w-75' >
-                    <input className='mb-2' placeholder='Name' {...register("name", { required: true, maxLength: 20 })} />
-                    <Button onClick={()=>HandleAddQuantity (Item.quantity)}> Add Quantity</Button>
+                    {/* <input onChange={(e) => handleUpdateQuantity(e)} value={updatedQuantity} className='mb-2' placeholder='Quantity' type="number" {...register("updatedQuantity", { required: true, maxLength: 20 })} /> */}
+                    <input className='mb-2' placeholder='Quantity' type="number" onChange={(e) => setUpdatedQuantity(parseInt(e.target.value))} value={updatedQuantity} />
+                    <Button onClick={()=>HandleAddQuantity(updatedQuantity, Item.quantity)}> Add Quantity</Button>
                 </form>
 
         </div>

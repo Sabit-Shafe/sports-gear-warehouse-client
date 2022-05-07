@@ -27,12 +27,14 @@ const Login = () => {
     };
     
 
-    const handleSubmit = event => {
+    const handleSubmit =async event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passRef.current.value;
-        signInWithEmailAndPassword(email, password);
-
+        await signInWithEmailAndPassword(email, password);
+        const {data} = await fetch(`http://localhost:5000/login`)
+        localStorage.setItem('accessToken', data.accessToken);
+        navigate(from, { replace: true });
 
     }
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(

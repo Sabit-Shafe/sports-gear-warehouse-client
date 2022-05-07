@@ -1,0 +1,48 @@
+import React from 'react';
+import { signOut } from 'firebase/auth';
+import { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+// import axiosPrivate from '../../api/axiosPrivate';
+import auth from '../../firebase.init';
+
+const MyItems = () => {
+    const [user] = useAuthState(auth);
+    const [Items, setItems] = useState([]);
+    const navigate = useNavigate();
+    // const [isError, setIsError] = useState(false);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const email = user.email;
+            const url = `http://localhost:5000/items?email=${email}`;
+            console.log(url);
+            try {
+                const response = await fetch(url)
+                if (response.status === 200) {
+                    let data = await response.json();
+                    setItems(data);
+                } else {
+                    throw 'Error fetching users list'
+                }
+                // .then(res => res.json())
+                // .then(data => setItems(data));
+            } catch (error) {
+                if (error.response.status === 401 || error.response.status === 403) {
+                    signOut(auth);
+                    navigate('/login')
+                }
+                // setIsError(true)
+            }
+        }
+        fetchData();
+
+    }, [navigate, user])
+    return (
+        <div>
+            <h1>My items{Items.length}</h1>
+        </div>
+    );
+};
+
+export default MyItems;

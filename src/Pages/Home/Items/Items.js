@@ -20,7 +20,7 @@ const Services = () => {
             <div className="container">
                 <h1 className="text-success text-center">Inventory Items</h1>
                 <div className="row">
-                    {Items.map(Items => <Item
+                    {Items.slice(0, 6).map(Items => <Item
                     key = {Items._id}
                     items = {Items}
                     ></Item>)}

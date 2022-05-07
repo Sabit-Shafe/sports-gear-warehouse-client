@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useItemDetails = ItemId =>{
+const useItemDetails = (ItemId, shouldRemount) =>{
     const [Item, setItem] = useState({});
 
     useEffect( () =>{
@@ -10,8 +10,8 @@ const useItemDetails = ItemId =>{
         .then(res=> res.json())
         .then(data => setItem(data));
 
-    }, [ItemId]);
-    return [Item]
+    }, [ItemId, shouldRemount]);
+    return [Item, setItem];
 }
 
 export default useItemDetails;
