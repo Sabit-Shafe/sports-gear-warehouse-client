@@ -12,7 +12,7 @@ const Services = () => {
     }, [])
     const navigate = useNavigate();
     const navigateToItemDetail = id =>{
-        navigate(`/inventory`);
+        navigate(`/Inventory`);
     }
 
     return (
