@@ -1,6 +1,6 @@
 import React from 'react';
 import { HiOutlineTrash } from "react-icons/hi";
-import { Button, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import useItems from '../../hooks/useItems';
 import { useState } from 'react'

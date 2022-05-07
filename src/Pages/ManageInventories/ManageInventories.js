@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import ManageInventory from '../ManageInventory/ManageInventory';
-import { useItems } from '../../hooks/useItems'
+// import { useItems } from '../../hooks/useItems'
 
 const ManageInventories = () => {
     const [Items, setItems] = useState([]);

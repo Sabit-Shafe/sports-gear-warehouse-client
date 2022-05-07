@@ -5,11 +5,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 // import axiosPrivate from '../../api/axiosPrivate';
 import auth from '../../firebase.init';
+import MyItem from '../MyItem/MyItem';
 
 const MyItems = () => {
     const [user] = useAuthState(auth);
     const [Items, setItems] = useState([]);
     const navigate = useNavigate();
+    const [shouldRemount, setShouldRemount] = useState(false)
     // const [isError, setIsError] = useState(false);
 
     useEffect(() => {
@@ -22,9 +24,10 @@ const MyItems = () => {
                 if (response.status === 200) {
                     let data = await response.json();
                     setItems(data);
-                } else {
-                    throw 'Error fetching users list'
                 }
+                //  else {
+                //     throw 'Error fetching users list'
+                // }
                 // .then(res => res.json())
                 // .then(data => setItems(data));
             } catch (error) {
@@ -36,11 +39,21 @@ const MyItems = () => {
             }
         }
         fetchData();
+        
 
-    }, [navigate, user])
+    }, [navigate, user, shouldRemount]);
     return (
         <div>
-            <h1>My items{Items.length}</h1>
+            <h1 className="text-center text-primary">My items </h1>
+            <div className="row">
+                    {Items.map(Items => <MyItem
+                    key = {Items._id}
+                    items = {Items}
+                    shouldRemount={shouldRemount}
+                    setShouldRemount={setShouldRemount}
+                    ></MyItem>)}
+                
+                </div>
         </div>
     );
 };
