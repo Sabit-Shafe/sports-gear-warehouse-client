@@ -22,6 +22,7 @@ const ManageInventory = ({items}) => {
       <th>Item Quantity</th>
       <th>Supplier Name</th>
       <th>Delete Item</th>
+      <th>Item Details</th>
     </tr>
   </thead>
   <tbody>
@@ -31,7 +32,8 @@ const ManageInventory = ({items}) => {
       <td>{price} <span>$</span></td>
       <td>{quantity}</td>
       <td>{supplierName}</td>
-      <td className="text-center"><HiOutlineTrash/></td>
+      <td className = " text-center"><HiOutlineTrash/></td>
+      <Button onClick={() => navigateToItemDetail(_id)} className='btn btn-Primary text-success'>Details</Button>
     </tr>
   </tbody>
 </Table> 

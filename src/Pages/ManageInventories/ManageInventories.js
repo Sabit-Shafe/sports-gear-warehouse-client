@@ -10,7 +10,7 @@ const ManageInventories = () => {
     }, [])
     return (
         <div>
-                <h1 className="text-success text-center">My Consultency Types</h1>
+                <h1 className="text-success text-center mb-5 mt-3">Manage Inventories</h1>
                 <div className="row">
                     {Items.map(Items => <ManageInventory
                     key = {Items._id}
