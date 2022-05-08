@@ -18,7 +18,7 @@ const Services = () => {
     return (
         <div className="">
             <div className="container">
-                <h1 className="text-success text-center">Inventory Items</h1>
+                <h1 className="text-success text-center mt-5">Inventory Items</h1>
                 <div className="row">
                     {Items.slice(0, 6).map(Items => <Item
                     key = {Items._id}

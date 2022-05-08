@@ -16,22 +16,22 @@ const Header = () => {
     
     return (
         <>
-            <Navbar collapseOnSelect sticky="top" opacity= "25" bg="light" variant="light">
-                <Container>
+            <Navbar collapseOnSelect sticky="top" opacity= "25" style={{color: 'black'}} bg="light" expand="lg" variant="info">
+                <Container fluid>
                     <Navbar.Brand className="text-info fs-2 fw-bold" href="#home">Sports Gear Warehouse</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav " />
-                    <Navbar.Collapse id="responsive-navbar-nav"></Navbar.Collapse>
-                    <Nav className="justify-content-end me-auto">
+                    <Navbar.Toggle aria-controls="navbarScroll" />
+                    <Navbar.Collapse id="navbarScroll">
+                    <Nav className="justify-content-end ms-auto ">
                         <Nav.Link as = {Link} to="home">Home</Nav.Link>
                         {/* <Nav.Link as = {Link} to="Inventory">Inventory</Nav.Link> */}
                         <Nav.Link as = {Link} to="blogs">Blogs</Nav.Link>
                         
                     </Nav>
-                    <Nav>
+                    <Nav className="text-info">
                     {
                                 user && <>
                                 <Nav.Link as={Link} to="AddItem">Add Item</Nav.Link>
-                                <Nav.Link as={Link} to="Inventory">Manage Items</Nav.Link>
+                                <Nav.Link as={Link} to="Inventory">Manage Inventory</Nav.Link>
                                 <Nav.Link as={Link} to="MyItems">My Items</Nav.Link>
                                 </>
                             }
@@ -44,6 +44,7 @@ const Header = () => {
                                 Login
                             </Nav.Link>}
                         </Nav>
+                        </Navbar.Collapse>
                 </Container>
             </Navbar>
         </>

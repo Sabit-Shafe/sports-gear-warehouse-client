@@ -1,5 +1,5 @@
 import React from 'react';
-import Help from './Help/Help';
+import Helps from './Helps/Helps';
 import Newsletter from './Newsletter/Newsletter';
 // import Services from './Services/Services';
 import Slider from './Slider/Slider';
@@ -10,7 +10,7 @@ const Home = () => {
         <>
         <Slider></Slider>
         {/* <Services></Services> */}
-        <Help></Help>
+        <Helps></Helps>
         <Items></Items>
         <Newsletter></Newsletter>
         </>
