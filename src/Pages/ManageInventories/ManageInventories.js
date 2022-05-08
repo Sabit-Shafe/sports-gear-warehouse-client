@@ -9,33 +9,34 @@ const ManageInventories = () => {
     const [shouldRemount, setShouldRemount] = useState(false)
     // const [item] = useItems(shouldRemount)
 
-    useEffect( ()=>{
+    useEffect(() => {
         fetch('http://localhost:5000/items')
-        .then(res => res.json())
-        .then(data => setItems(data));
+            .then(res => res.json())
+            .then(data => setItems(data));
     }, [shouldRemount])
 
     const navigate = useNavigate();
-    const navigateToAddItem =()=>{
+    const navigateToAddItem = () => {
         navigate('/AddItem');
     }
 
     return (
         <div>
-                <h1 className="text-success text-center mb-5 mt-3">Manage Inventories</h1>
-                <div className="row">
-                    {Items.map(Items => <ManageInventory
-                    key = {Items._id}
-                    items = {Items}
+            <div className="text-center mb-5 mt-3">
+                <Button onClick={() => navigateToAddItem()} className='btn btn-Primary'>Add New Item</Button>
+            </div>
+            <h1 className="text-success text-center mb-5 mt-3">Manage Inventories</h1>
+            <div className="row">
+                {Items.map(Items => <ManageInventory
+                    key={Items._id}
+                    items={Items}
                     shouldRemount={shouldRemount}
                     setShouldRemount={setShouldRemount}
-                    
-                    ></ManageInventory>)}
-                </div>
 
-                <div className="text-center mb-5 mt-3">
-                <Button onClick={() => navigateToAddItem()} className='btn btn-Primary'>Add New Item</Button>
-                </div>
+                ></ManageInventory>)}
+            </div>
+
+
         </div>
     );
 };

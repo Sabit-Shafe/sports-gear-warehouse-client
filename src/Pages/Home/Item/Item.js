@@ -1,18 +1,18 @@
-import Button  from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button';
 import React from 'react';
 import Card from 'react-bootstrap/Card'
 import { useNavigate } from 'react-router-dom';
 
 
-const Items = ({items}) => {
-    const {_id, name, img, description, price, quantity, supplierName} = items;
+const Items = ({ items }) => {
+    const { _id, name, img, description, price, quantity, supplierName } = items;
     console.log(items);
     const navigate = useNavigate();
-    const navigateToItemDetail = id =>{
+    const navigateToItemDetail = id => {
         navigate(`/items/${id}`);
     }
-    
-    
+
+
     return (
         <div className="g-5 col-sm-12 col-md-6 col-lg-4">
             <Card style={{ width: '18rem' }}>
@@ -28,7 +28,7 @@ const Items = ({items}) => {
                     <Button onClick={() => navigateToItemDetail(_id)} className='btn btn-primary'>Stock Update</Button>
                 </Card.Body>
             </Card>
-            
+
 
         </div>
     );

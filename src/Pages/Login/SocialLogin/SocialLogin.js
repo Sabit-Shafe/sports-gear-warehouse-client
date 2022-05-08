@@ -10,20 +10,20 @@ const SocialLogin = () => {
     const [signInWithGithub, userGit, loadingGit, errorGit] = useSignInWithGithub(auth);
     const location = useLocation();
     const navigate = useNavigate();
-    
 
-    
 
-    if(loading || loadingGit){
+
+
+    if (loading || loadingGit) {
         return <Load></Load>
     }
 
 
     let errorElement;
-    
+
     let from = location.state?.from?.pathname || "/";
-    
-    if (error || errorGit){
+
+    if (error || errorGit) {
         errorElement = <p className='text-danger'>Error: {error?.message} {errorGit?.message}</p>
     }
 

@@ -18,7 +18,7 @@ const MyItems = () => {
         const fetchData = async () => {
             const email = user.email;
             const url = `http://localhost:5000/items?email=${email}`;
-            console.log(url);
+            // console.log(url);
             try {
                 const response = await fetch(url)
                 if (response.status === 200) {
@@ -39,21 +39,21 @@ const MyItems = () => {
             }
         }
         fetchData();
-        
 
-    }, [navigate, user, shouldRemount]);
+
+    }, [user, shouldRemount, navigate]);
     return (
         <div>
-            <h1 className="text-center text-primary">My items </h1>
+            <h1 className="text-center text-primary">My items</h1>
             <div className="row">
-                    {Items.map(Items => <MyItem
-                    key = {Items._id}
-                    items = {Items}
+                {Items.map(Items => <MyItem
+                    key={Items._id}
+                    items={Items}
                     shouldRemount={shouldRemount}
                     setShouldRemount={setShouldRemount}
-                    ></MyItem>)}
-                
-                </div>
+                ></MyItem>)}
+
+            </div>
         </div>
     );
 };

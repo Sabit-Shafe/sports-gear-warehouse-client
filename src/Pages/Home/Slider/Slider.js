@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import { Carousel } from 'react-bootstrap';
 import image2 from '../../../images/2nd.jpg'
 import image3 from '../../../images/3rd.jpg'
@@ -8,13 +8,13 @@ import image4 from '../../../images/4th.jpg'
 const Slider = () => {
 
 
-    
-       
-      
+
+
+
     const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex, e) => {
-      setIndex(selectedIndex);
+        setIndex(selectedIndex);
     };
     return (
         <Carousel activeIndex={index} onSelect={handleSelect} fade className="mb-5 container ">
