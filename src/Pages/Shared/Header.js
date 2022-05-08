@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 
+
 const Header = () => {
     const [user] = useAuthState(auth);
 
@@ -16,11 +17,12 @@ const Header = () => {
 
     return (
         <>
-            <Navbar collapseOnSelect sticky="top" opacity="25" style={{ color: 'black' }} bg="light" expand="lg" variant="info">
+            <Navbar collapseOnSelect sticky="top" opacity="25" style={{ color: 'black' }} bg="dark" expand="lg" variant="info">
                 <Container fluid>
                     <Navbar.Brand className="text-info fs-2 fw-bold" href="#home">Sports Gear Warehouse</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="navbarScroll" />
+                    <Navbar.Toggle aria-controls="navbarScroll"  className="bg-info"/>
                     <Navbar.Collapse id="navbarScroll">
+                    
                         <Nav className="justify-content-end ms-auto ">
                             <Nav.Link as={Link} to="home">Home</Nav.Link>
                             {/* <Nav.Link as = {Link} to="Inventory">Inventory</Nav.Link> */}

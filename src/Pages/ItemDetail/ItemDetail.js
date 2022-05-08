@@ -82,11 +82,12 @@ const ItemDetail = () => {
                     <Button   onClick={()=> handleDelivered (Item.quantity)} className='btn btn-primary'>Delivered</Button>
                 </Card.Body>
             </Card>
+            
             {/* disabled={Item.quantity === 0 ? false : true} */}
         </div>
-        <div>
+        <div className=''>
         <h2>Please add a quantity</h2>
-                <form className='d-flex flex-column w-75' >
+                <form className='w-75' >
                     {/* <input onChange={(e) => handleUpdateQuantity(e)} value={updatedQuantity} className='mb-2' placeholder='Quantity' type="number" {...register("updatedQuantity", { required: true, maxLength: 20 })} /> */}
                     <input className='mb-2' placeholder='Quantity' type="number" onChange={(e) => setUpdatedQuantity(parseInt(e.target.value))} value={updatedQuantity} />
                     <Button onClick={()=>HandleAddQuantity(updatedQuantity, Item.quantity)}> Add Quantity</Button>
@@ -95,9 +96,10 @@ const ItemDetail = () => {
         </div>
        
      </div>
+     <div className='text-center'>
      <Button onClick={() => navigateToItemDetail()} className='btn btn-primary '>Stock Update</Button>
      </div>
-     
+     </div>
     );
 };
 
