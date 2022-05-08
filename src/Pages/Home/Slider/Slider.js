@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import { Carousel } from 'react-bootstrap';
-import image1 from '../../../images/1st.jpg'
 import image2 from '../../../images/2nd.jpg'
 import image3 from '../../../images/3rd.jpg'
+import image4 from '../../../images/4th.jpg'
 
 
 const Slider = () => {
+
+
+    
+       
+      
     const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex, e) => {
@@ -16,12 +21,12 @@ const Slider = () => {
             <Carousel.Item>
                 <img
                     className="d-block w-100 h-50"
-                    src={image1}
+                    src={image4}
                     alt="First slide"
                 />
-                <Carousel.Caption>
-                    <h3>Student Visa</h3>
-                    <p>Garanteed visa 100 % support</p>
+                <Carousel.Caption className="text-dark" >
+                    <h3 >Bike Helmet</h3>
+                    <p >High quality bike helmet</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -32,8 +37,8 @@ const Slider = () => {
                 />
 
                 <Carousel.Caption>
-                    <h3> Immigration Visa</h3>
-                    <p>Canada immigration success rate is 95%</p>
+                    <h3>Football sports gear</h3>
+                    <p>Best football sport gear</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -43,9 +48,9 @@ const Slider = () => {
                     alt="Third slide"
                 />
 
-                <Carousel.Caption className="text-dark">
-                    <h3>Work Permit Visa</h3>
-                    <p>Work permit visa success rate is 90%</p>
+                <Carousel.Caption className="text-light">
+                    <h3>various sports equipment</h3>
+                    <p>sports equipment quality is 100%</p>
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>
