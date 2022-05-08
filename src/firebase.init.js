@@ -5,13 +5,21 @@ import {getAuth} from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// const firebaseConfig = {
+//   apiKey: "AIzaSyC4Z-0htLMWjxtFMhdg2FwaCKyOXP7a3t4",
+//   authDomain: "sports-gear-warehouse-5e15c.firebaseapp.com",
+//   projectId: "sports-gear-warehouse-5e15c",
+//   storageBucket: "sports-gear-warehouse-5e15c.appspot.com",
+//   messagingSenderId: "256352442334",
+//   appId: "1:256352442334:web:b6cb356768986f323cef4f"
+// };
 const firebaseConfig = {
-  apiKey: "AIzaSyC4Z-0htLMWjxtFMhdg2FwaCKyOXP7a3t4",
-  authDomain: "sports-gear-warehouse-5e15c.firebaseapp.com",
-  projectId: "sports-gear-warehouse-5e15c",
-  storageBucket: "sports-gear-warehouse-5e15c.appspot.com",
-  messagingSenderId: "256352442334",
-  appId: "1:256352442334:web:b6cb356768986f323cef4f"
+  apiKey:process.env.REACT_APP_apiKey,
+  authDomain:process.env.REACT_APP_authDomain,
+  projectId:process.env.REACT_APP_projectId,
+  storageBucket:process.env.REACT_APP_storageBucket,
+  messagingSenderId:process.env.REACT_APP_messagingSenderId,
+  appId:process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase

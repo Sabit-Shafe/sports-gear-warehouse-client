@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const MyItem = (props) => {
     const {items} = props;
-    const {_id, name, price, quantity, supplierName, shouldRemount, setShouldRemount} = props;
+    const {_id, name, shouldRemount, setShouldRemount} = props;
     const navigate = useNavigate();
     const navigateToItemDetail = id =>{
         navigate(`/items/${id}`);
@@ -20,8 +20,6 @@ const MyItem = (props) => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
-                    // const remaining = item.filter(item => item._id !== id);
-                    // setItem(remaining);
                     setShouldRemount(!shouldRemount)
       
                 })
