@@ -21,7 +21,7 @@ const ItemDetail = () => {
         
         const updatedQuantity = (parseInt(quantity) -1).toString();
 
-        const url = `http://localhost:5000/items/${ItemId}`
+        const url = `https://protected-tor-63915.herokuapp.com/items/${ItemId}`
         fetch(url, {
             method: "PUT",
             headers: {
@@ -43,7 +43,7 @@ const ItemDetail = () => {
         const updatedQuantity = (parseInt(newQuantity) + parseInt(oldQuantity)).toString();
 
         // const updatedQuantity = {finalQuantity}
-        const url = `http://localhost:5000/items/${ItemId}`
+        const url = `https://protected-tor-63915.herokuapp.com/items/${ItemId}`
         fetch(url, {
             method: "PUT",
             headers: {

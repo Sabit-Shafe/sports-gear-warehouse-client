@@ -10,7 +10,7 @@ const ManageInventories = () => {
     // const [item] = useItems(shouldRemount)
 
     useEffect(() => {
-        fetch('http://localhost:5000/items')
+        fetch('https://protected-tor-63915.herokuapp.com/items')
             .then(res => res.json())
             .then(data => setItems(data));
     }, [shouldRemount])
@@ -22,10 +22,11 @@ const ManageInventories = () => {
 
     return (
         <div>
+            
+            <h1 className="text-success text-center mb-5 mt-3">Manage Inventories</h1>
             <div className="text-center mb-5 mt-3">
                 <Button onClick={() => navigateToAddItem()} className='btn btn-Primary'>Add New Item</Button>
             </div>
-            <h1 className="text-success text-center mb-5 mt-3">Manage Inventories</h1>
             <div className="row">
                 {Items.map(Items => <ManageInventory
                     key={Items._id}

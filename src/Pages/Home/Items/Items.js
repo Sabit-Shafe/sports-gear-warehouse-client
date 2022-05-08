@@ -6,7 +6,7 @@ import Item from '../Item/Item';
 const Services = () => {
     const [Items, setItems] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/items')
+        fetch('https://protected-tor-63915.herokuapp.com/items')
             .then(res => res.json())
             .then(data => setItems(data));
     }, [])

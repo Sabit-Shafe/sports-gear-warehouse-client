@@ -6,7 +6,7 @@ const AddItem = () => {
 
     const onSubmit = data => {
         console.log(data);
-        const url = `http://localhost:5000/addItems`;
+        const url = `https://protected-tor-63915.herokuapp.com/addItems`;
         fetch(url, {
             method: 'POST',
             headers: {

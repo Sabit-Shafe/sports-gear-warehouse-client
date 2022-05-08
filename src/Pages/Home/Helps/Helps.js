@@ -4,7 +4,7 @@ import Help from '../Help/Help';
 const Helps = () => {
     const [support, setSupport] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/support')
+        fetch('https://protected-tor-63915.herokuapp.com/support')
             .then(res => res.json())
             .then(data => setSupport(data));
     }, [])

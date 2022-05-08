@@ -17,7 +17,7 @@ const MyItems = () => {
     useEffect(() => {
         const fetchData = async () => {
             const email = user.email;
-            const url = `http://localhost:5000/items?email=${email}`;
+            const url = `https://protected-tor-63915.herokuapp.com/items?email=${email}`;
             // console.log(url);
             try {
                 const response = await fetch(url)
@@ -43,7 +43,7 @@ const MyItems = () => {
 
     }, [user, shouldRemount, navigate]);
     return (
-        <div>
+        <div className="container">
             <h1 className="text-center text-primary">My items</h1>
             <div className="row">
                 {Items.map(Items => <MyItem

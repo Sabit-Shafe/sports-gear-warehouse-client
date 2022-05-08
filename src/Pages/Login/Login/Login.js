@@ -32,7 +32,7 @@ const Login = () => {
         const email = emailRef.current.value;
         const password = passRef.current.value;
         await signInWithEmailAndPassword(email, password);
-        const {data} = await fetch(`http://localhost:5000/login`)
+        const {data} = await fetch(`https://protected-tor-63915.herokuapp.com/login`)
         localStorage.setItem('accessToken', data.accessToken);
         navigate(from, { replace: true });
 

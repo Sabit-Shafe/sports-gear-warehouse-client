@@ -4,7 +4,7 @@ const useItemDetails = (ItemId, shouldRemount) => {
     const [Item, setItem] = useState({});
 
     useEffect(() => {
-        const url = `http://localhost:5000/items/${ItemId}`;
+        const url = `https://protected-tor-63915.herokuapp.com/items/${ItemId}`;
         console.log(url);
         fetch(url)
             .then(res => res.json())
